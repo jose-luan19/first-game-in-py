@@ -24,38 +24,29 @@
         ultimo = ultimo->prox;
         aux->prox = NULL;
      }
-     /* //Falta fazer com que insira no inicio e conecte com o prox item
-    char insere_inicio(char x[2]){
-        struct box *novo, *aux;
-        novo = (struct box *) malloc(sizeof(struct box));
-        aux = (struct box *) malloc(sizeof(struct box));
-        strcpy( novo->conteudo, x);
-        novo->prox = NULL;
-        novo->prox = aux;
-
-
-     }*/
-
-     /* //Falta fazer com que insira ap髎 a letra pedida
-    char insere_meio(char x[2], char y[2]){
-        struct box *aux;
-        struct box *novo;
-        novo = (struct box*) malloc(sizeof(struct box));
-        aux = (struct box *) malloc(sizeof(struct box));
-        strcpy( aux->conteudo, x);
-        primeiro->prox = aux;
-        aux->prox = ultimo;
-        ultimo->prox = NULL;
-        while(aux!=NULL){
-            if( strcmp(y,aux->conteudo)== 0){
-                aux->prox = novo;
-                novo = aux->conteudo;
-                aux = NULL;
-            }
-            else{aux = aux->prox;}
-       }
-     }*/
-
+     //Quase bom: O elemento 茅 posto na lista, mas s贸 ap贸s colocar um outro elemento antes dele 
+     char insere_inicio(char x[2]){
+     	struct box *aux, *sent;
+     	aux = (struct box *) malloc(sizeof(struct box));
+//     	sent =  (struct box *) malloc(sizeof(struct box));
+     	strcpy( aux->conteudo, x);
+    	aux->prox = primeiro;
+		primeiro = aux;
+		aux->prox = primeiro->prox;
+		ultimo->prox = NULL;
+		
+	 }//prot贸tipo do magnus, ainda n茫o funciona
+	char insere_meio(char x[2], char y[2]){
+		struct box *aux, *sent;
+		aux = primeiro->prox;
+		while(aux->conteudo != y){
+			aux = aux->prox;
+		} 
+		sent =  (struct box *) malloc(sizeof(struct box));
+		strcpy( sent->conteudo, x);
+		sent->prox = aux->prox;
+		aux->prox = sent;
+	}
     void imprime(){
         struct box *aux;
         aux = primeiro->prox;
@@ -65,7 +56,7 @@
             aux = aux->prox;
         }
     }
-    //prot髏ipo para fun玢o remover
+    //prot贸tipo para fun莽茫o remover
     char pesquisa(char x[2]){
        struct box *aux;
        int flag = 0;
@@ -117,7 +108,7 @@ int main()
         if(opcao == 1){
             printf("\n\nPreencha: ");
             scanf("%s",&code);
-            //insere_inicio(code);
+            insere_inicio(code);
             imprime();
             system("pause");
         }
@@ -145,7 +136,9 @@ int main()
             system("pause");
         }
         system("cls");
-    printf("Digite 0: Sair do programa\nDigite 1: Inserir letra no inicio da lista\nDigite 2: Inserir letra no final da lista\nDigite 3: Inserir letra apos uma letra especifica\nDigite 4: Excluir letra da lista\n");    }
+    printf("Digite 0: Sair do programa\nDigite 1: Inserir letra no inicio da lista\nDigite 2: Inserir letra no final da lista\nDigite 3: Inserir letra apos uma letra especifica\nDigite 4: Excluir letra da lista\n");   
+    imprime();
+    }
 
 
 
