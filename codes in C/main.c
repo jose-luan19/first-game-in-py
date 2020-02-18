@@ -8,38 +8,34 @@
      struct box *prox;
      };
      struct box *primeiro, *ultimo;
-
      void vazia(){
          struct box *aux;
          aux = (struct box *) malloc(sizeof(struct box));
          primeiro = aux;
          ultimo = primeiro;
      }
-
      char insere_final(char x[2]){
         struct box *aux;
         aux = (struct box *) malloc(sizeof(struct box));
         strcpy( aux->conteudo, x);
         ultimo->prox = aux;
         ultimo = ultimo->prox;
-        aux->prox = NULL;
+        ultimo->prox = NULL;
      }
-     //Quase bom: O elemento é posto na lista, mas só após colocar um outro elemento antes dele 
      char insere_inicio(char x[2]){
      	struct box *aux, *sent;
-     	aux = (struct box *) malloc(sizeof(struct box));
-//     	sent =  (struct box *) malloc(sizeof(struct box));
-     	strcpy( aux->conteudo, x);
-    	aux->prox = primeiro;
-		primeiro = aux;
-		aux->prox = primeiro->prox;
-		ultimo->prox = NULL;
-		
-	 }//protótipo do magnus, ainda não funciona
+     	aux = primeiro;
+     	sent =  (struct box *) malloc(sizeof(struct box));
+     	strcpy( sent->conteudo, x);
+     	sent->prox = aux->prox;
+    	aux->prox = sent;
+	 }
+	 //protótipo do magnus, ainda não funciona
 	char insere_meio(char x[2], char y[2]){
 		struct box *aux, *sent;
 		aux = primeiro->prox;
-		while(aux->conteudo != y){
+		while(strcmp(y,aux->conteudo)!=0){
+			//printf("%s", y);
 			aux = aux->prox;
 		} 
 		sent =  (struct box *) malloc(sizeof(struct box));
@@ -56,21 +52,21 @@
             aux = aux->prox;
         }
     }
-    //protótipo para função remover
-    char pesquisa(char x[2]){
-       struct box *aux;
-       int flag = 0;
-       aux = primeiro->prox;
-       while(aux!=NULL){
-            if( strcmp(x,aux->conteudo)== 0){
-                printf("\n ACHOU %s",x);
-                flag = 1;
-                aux=NULL;
-            }
-            else{aux = aux->prox;}
-       }
-       if(!flag){printf("\n'%s' nao se encontra nessa lista",x);}
-    }
+//     protótipo para função remover
+//     char pesquisa(char x[2]){
+//        struct box *aux;
+//        int flag = 0;
+//        aux = primeiro->prox;
+//        while(aux!=NULL){
+//             if( strcmp(x,aux->conteudo)== 0){
+//                 printf("\n ACHOU %s",x);
+//                 flag = 1;
+//                 aux=NULL;
+//             }
+//             else{aux = aux->prox;}
+//        }
+//        if(!flag){printf("\n'%s' nao se encontra nessa lista",x);}
+//     }
     char remover(char x[2]){
        struct box *aux;
        struct box *sentinela;
@@ -120,11 +116,11 @@ int main()
             system("pause");
         }
         if(opcao == 3){
-           /*printf("Apos qual letra deve-se preencher: ");
+            printf("Apos qual letra deve-se preencher: ");
             scanf("%s",&lugar);
             printf("\n\nPreencha: ");
             scanf("%s",&code);
-            insere_meio(code,lugar);*/
+            insere_meio(code,lugar);
             imprime();
             system("pause");
         }
