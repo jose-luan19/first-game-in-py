@@ -1,0 +1,104 @@
+typedef struct cliente {
+     int produtos;
+     struct cliente *prox;
+     int tamanho;
+     };
+     struct cliente *primeiroCliente, *ultimoCliente;
+
+     void filaClienteVazia(){
+         struct cliente *aux;
+         aux = (struct cliente *) malloc(sizeof(struct cliente));
+         primeiroCliente = aux;
+         ultimoCliente = primeiroCliente;
+     }
+
+     int insere_final_cliente(int x){
+        struct cliente *aux;
+        aux = (struct cliente *) malloc(sizeof(struct cliente));
+        aux->produtos = x;
+        ultimoCliente->prox = aux;
+        ultimoCliente = ultimoCliente->prox;
+        ultimoCliente->prox = NULL;
+        aux->tamanho++;
+     }
+     typedef struct caixa {
+     int tempo;
+     struct caixa *prox;
+     int tamanho;
+     };
+     struct caixa *primeiroCaixa, *ultimoCaixa;
+
+     void filaCaixaVazia(){
+         struct caixa *aux;
+         aux = (struct caixa *) malloc(sizeof(struct caixa));
+         primeiroCaixa = aux;
+         ultimoCaixa = primeiroCaixa;
+     }
+
+     int insere_final_caixa(int x){
+        struct caixa *aux;
+        aux = (struct caixa *) malloc(sizeof(struct caixa));
+        aux->tempo = x;
+        ultimoCaixa->prox = aux;
+        ultimoCaixa = ultimoCaixa->prox;
+        ultimoCaixa->prox = NULL;
+        aux->tamanho++;
+     }
+
+
+int main(){
+    filaClienteVazia();
+    filaCaixaVazia();
+    int t=0, time, i, j, k=0;
+    long int clienteN, caixaM;
+    scanf("%i",&clienteN);
+    scanf("%i",& caixaM);
+    int produto[clienteN];
+    int tempoCaixa[caixaM];
+    int tempo[caixaM];
+    struct cliente *auxiliar1;
+    struct caixa *auxiliar2;
+    auxiliar1= primeiroCliente->prox;
+    auxiliar2 = primeiroCaixa->prox;
+
+    for(i=0;i<caixaM;i++){
+        scanf("%i",&tempoCaixa[i]);
+        insere_final_caixa(tempoCaixa[i]);
+    }
+	for(i=0;i<clienteN;i++){
+        scanf("%i",&produto[i]);
+        insere_final_cliente(produto[i]);
+	}
+
+    while(t<caixaM){
+        if(t<caixaM){
+            tempo[t]= produto[t]*tempoCaixa[t];
+            //auxiliar1=auxiliar1->prox;
+            //auxiliar2=auxiliar2->prox;
+            t++;
+        }
+        else{
+            time = tempo[0];
+            for(i=0;i<clienteN;i++){
+                if(time>tempo[i]){
+                    time=tempo[i];
+                    k=i;
+                }
+            }
+            tempo[k]+= produto[t]*tempoCaixa[k];
+            k=0;
+            t++;
+            //auxiliar1=auxiliar1->prox;
+            //auxiliar2=auxiliar2->prox;
+        }
+        time = tempo[0];
+        for(i=0;i<clienteN;i++){
+            if (time<tempo[i]){
+                time+=tempo[i];
+            }
+        }
+
+    }
+    printf("%i\n", time);
+    return 0;
+}
