@@ -25,5 +25,5 @@
 _______________________________________________
 
 Ferramentas necessárias:
-Python v3.* : https://www.python.org/downloads/
+Python v3.* : https://www.python.org/downloads/ <br>
 Pygame: python -m pip install -U pygame --user
