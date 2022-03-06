@@ -29,5 +29,5 @@
 
 
 ## Execução:
-#### Abri o prompt/terminal e acessar o diretório onde se contra o arquivo e a imagem executar o comando <br>
+#### Abrir o prompt/terminal e acessar o diretório onde se contra o arquivo e a imagem executar o comando <br>
 #### python utebo.py
