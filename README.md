@@ -21,3 +21,9 @@
 
 #### F1  -> Reinicia o jogo
 #### ESC -> Fecha o jogo
+
+_______________________________________________
+
+Ferramentas necessárias:
+Python v3.* : https://www.python.org/downloads/
+Pygame: python -m pip install -U pygame --user
