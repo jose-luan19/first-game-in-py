@@ -27,3 +27,9 @@ _______________________________________________
 Ferramentas necessárias:
 Python v3.* : https://www.python.org/downloads/ <br>
 Pygame: python -m pip install -U pygame --user
+
+_______________________________________________
+
+Execução:
+Abri o prompt/terminal e acessar o diretório onde se contra o arquivo e a imagem executar o comando <br>
+python utebo.py
