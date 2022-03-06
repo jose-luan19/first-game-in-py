@@ -17,5 +17,7 @@
 #### ArrowUp     -> movimenta para cima
 #### L           -> turbo
 
+-----------------------------------------------
+
 #### F1  -> Reinicia o jogo
 #### ESC -> Fecha o jogo
